@@ -18,10 +18,9 @@ const fetchToken = function(consumerKey, redirectUri, state, callback) {
 };
 
 const getRedirectUrl = function(code, redirectUri) {
-  return REDIRECT_URL.replace("{code}", code).replace(
-    "{redirect}",
-    redirectUri
-  );
+  return REDIRECT_URL
+    .replace("{code}", encodeURIComponent(code))
+    .replace("{redirect}", encodeURIComponent(redirectUri));
 };
 
 const getAccessToken = function(consumerKey, code, callback) {
